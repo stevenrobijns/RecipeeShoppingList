@@ -18,24 +18,17 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            EntityService = (function () {
-                function EntityService() {
-                    this.clone = function (source) { return Object.assign({}, source); };
-                    this.merge = function (target) {
-                        var sources = [];
-                        for (var _i = 1; _i < arguments.length; _i++) {
-                            sources[_i - 1] = arguments[_i];
-                        }
-                        return Object.assign.apply(Object, [target].concat(sources));
-                    };
-                    this.propertiesDiffer = function (entityA, entityB) { return Object.keys(entityA).find(function (key) { return entityA[key] !== entityB[key]; }); };
+            let EntityService = class EntityService {
+                constructor() {
+                    this.clone = (source) => Object.assign({}, source);
+                    this.merge = (target, ...sources) => Object.assign(target, ...sources);
+                    this.propertiesDiffer = (entityA, entityB) => Object.keys(entityA).find(key => entityA[key] !== entityB[key]);
                 }
-                EntityService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
-                ], EntityService);
-                return EntityService;
-            }());
+            };
+            EntityService = __decorate([
+                core_1.Injectable(), 
+                __metadata('design:paramtypes', [])
+            ], EntityService);
             exports_1("EntityService", EntityService);
         }
     }

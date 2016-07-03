@@ -6,15 +6,15 @@ import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 // import { CharacterService } from './character.service';
 
 @Component({
-  selector: 'recipees-root',
+  selector: 'recipes-root',
   template: `
     <router-outlet></router-outlet>
   `,
   directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-  { path: '/', name: 'Recipees', component: RecipeeListComponent, useAsDefault: true },
-	{ path: '/list/:id', name: 'Recipees', component: RecipeeListComponent	},
-	{ path: '/:id', name: 'Recipee', component: RecipeeComponent }
+  { path: '/', name: 'Recipes', component: RecipeListComponent, useAsDefault: true },
+	{ path: '/list/:id', name: 'Recipes', component: RecipeListComponent	},
+	{ path: '/:id', name: 'Recipe', component: RecipeComponent }
 ])
 export class CharactersComponent { }

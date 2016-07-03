@@ -18,15 +18,12 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            ToastService = (function () {
-                function ToastService() {
-                }
-                ToastService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
-                ], ToastService);
-                return ToastService;
-            }());
+            let ToastService = class ToastService {
+            };
+            ToastService = __decorate([
+                core_1.Injectable(), 
+                __metadata('design:paramtypes', [])
+            ], ToastService);
             exports_1("ToastService", ToastService);
         }
     }

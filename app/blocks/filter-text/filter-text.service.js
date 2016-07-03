@@ -18,17 +18,16 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            FilterService = (function () {
-                function FilterService() {
+            let FilterService = class FilterService {
+                constructor() {
                 }
-                FilterService.prototype.filter = function (data, props, originalList) {
-                    var filteredList;
+                filter(data, props, originalList) {
+                    let filteredList;
                     if (data && props && originalList) {
                         data = data.toLowerCase();
-                        var filtered = originalList.filter(function (item) {
-                            var match = false;
-                            for (var _i = 0, props_1 = props; _i < props_1.length; _i++) {
-                                var prop = props_1[_i];
+                        let filtered = originalList.filter(item => {
+                            let match = false;
+                            for (let prop of props) {
                                 if (item[prop].toString().toLowerCase().indexOf(data) > -1) {
                                     match = true;
                                     break;
@@ -43,13 +42,12 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         filteredList = originalList;
                     }
                     return filteredList;
-                };
-                FilterService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
-                ], FilterService);
-                return FilterService;
-            }());
+                }
+            };
+            FilterService = __decorate([
+                core_1.Injectable(), 
+                __metadata('design:paramtypes', [])
+            ], FilterService);
             exports_1("FilterService", FilterService);
         }
     }

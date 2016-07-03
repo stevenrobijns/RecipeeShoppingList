@@ -21,46 +21,41 @@ System.register(['angular2/core', './toast.service'], function(exports_1, contex
                 toast_service_1 = toast_service_1_1;
             }],
         execute: function() {
-            ToastComponent = (function () {
-                function ToastComponent(toastService) {
+            let ToastComponent = class ToastComponent {
+                constructor(toastService) {
                     this._defaults = {
                         title: '',
                         message: 'May the Force be with You'
                     };
                     toastService.activate = this.activate.bind(this);
                 }
-                ToastComponent.prototype.activate = function (message, title) {
-                    if (message === void 0) { message = this._defaults.message; }
-                    if (title === void 0) { title = this._defaults.title; }
+                activate(message = this._defaults.message, title = this._defaults.title) {
                     this.title = title;
                     this.message = message;
                     this._show();
-                };
-                ToastComponent.prototype.ngOnInit = function () {
+                }
+                ngOnInit() {
                     this._toastElement = document.getElementById('toast');
-                };
-                ToastComponent.prototype._show = function () {
-                    var _this = this;
+                }
+                _show() {
                     console.log(this.message);
                     this._toastElement.style.opacity = 1;
                     this._toastElement.style.zIndex = 9999;
-                    window.setTimeout(function () { return _this._hide(); }, 2500);
-                };
-                ToastComponent.prototype._hide = function () {
-                    var _this = this;
+                    window.setTimeout(() => this._hide(), 2500);
+                }
+                _hide() {
                     this._toastElement.style.opacity = 0;
-                    window.setTimeout(function () { return _this._toastElement.style.zIndex = 0; }, 400);
-                };
-                ToastComponent = __decorate([
-                    core_1.Component({
-                        selector: 'toast',
-                        templateUrl: 'app/blocks/toast/toast.component.html',
-                        styleUrls: ['app/blocks/toast/toast.component.css']
-                    }), 
-                    __metadata('design:paramtypes', [toast_service_1.ToastService])
-                ], ToastComponent);
-                return ToastComponent;
-            }());
+                    window.setTimeout(() => this._toastElement.style.zIndex = 0, 400);
+                }
+            };
+            ToastComponent = __decorate([
+                core_1.Component({
+                    selector: 'toast',
+                    templateUrl: './toast.component.html',
+                    styleUrls: ['app/blocks/toast/toast.component.css']
+                }), 
+                __metadata('design:paramtypes', [toast_service_1.ToastService])
+            ], ToastComponent);
             exports_1("ToastComponent", ToastComponent);
         }
     }

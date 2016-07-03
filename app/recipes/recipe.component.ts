@@ -4,14 +4,14 @@ import { Observable, Subscription } from 'rxjs/Rx';
 
 
 @Component({
-    selector: 'recipee',
-    templateUrl: 'app/recipees/recipee.component.html',
+    selector: 'recipe',
+    templateUrl: 'app/recipes/recipe.component.html',
     styles ['.mdl-textfield__label {top: 0,}'],
     directives: [ROUTER_DIRECTIVES]
 })
-export class RecipeeComponent implements CanDeactivate, OnDestroy, OnInit {
+export class RecipeComponent implements CanDeactivate, OnDestroy, OnInit {
     private _dbResetSubscription: Subscription;
     
-    @Input() Recipee: Recipee;
-    editRecipee: Recipee = <Recipee>{};
+    @Input() Recipe: Recipe;
+    editRecipe: Recipe = <Recipe>{};
 }

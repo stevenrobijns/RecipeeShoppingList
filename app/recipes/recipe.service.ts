@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Rx';
 // import { ExceptionService, SpinnerService } from '../blocks/blocks';
 // import { CONFIG, MessageService } from '../shared/shared';
 
-let recipeesUrl = CONFIG.baseUrls.recipees;
+let recipesUrl = CONFIG.baseUrls.recipes;
 
-export interface Recipee {
+export interface Recipe {
     id: number;
     name: string;
     ingredients: string;
@@ -15,13 +15,15 @@ export interface Recipee {
 }
 
 @Injectable()
-export class RecipeeService {
+export class RecipeService {
     constructor(
         private _http: Http,
         private _exceptionService: ExceptionService,
         private _messageService: MessageService,
         private _spinnerService: SpinnerService){
-            this._messageService.state.subscribe(state => this.getRecipees());
-        }    
+            this._messageService.state.subscribe(state => this.getRecipes());
+    }
+    
+    addRecipe
 
 }

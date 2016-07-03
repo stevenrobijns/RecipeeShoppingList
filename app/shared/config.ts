@@ -2,7 +2,7 @@ export let CONFIG = {
   baseUrls: {
     config: 'commands/config',
     resetDb: 'commands/resetDb',
-    characters: 'api/recipees.json',
+    characters: 'api/recipes.json',
     vehicles: 'api/shoppinglists.json'
   }
 }

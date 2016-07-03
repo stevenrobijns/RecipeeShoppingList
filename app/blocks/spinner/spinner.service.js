@@ -21,23 +21,22 @@ System.register(['angular2/core', 'rxjs/Rx'], function(exports_1, context_1) {
                 Rx_1 = Rx_1_1;
             }],
         execute: function() {
-            SpinnerService = (function () {
-                function SpinnerService() {
+            let SpinnerService = class SpinnerService {
+                constructor() {
                     this._spinnerSubject = new Rx_1.Subject();
                     this.spinnerState = this._spinnerSubject;
                 }
-                SpinnerService.prototype.show = function () {
+                show() {
                     this._spinnerSubject.next({ show: true });
-                };
-                SpinnerService.prototype.hide = function () {
+                }
+                hide() {
                     this._spinnerSubject.next({ show: false });
-                };
-                SpinnerService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
-                ], SpinnerService);
-                return SpinnerService;
-            }());
+                }
+            };
+            SpinnerService = __decorate([
+                core_1.Injectable(), 
+                __metadata('design:paramtypes', [])
+            ], SpinnerService);
             exports_1("SpinnerService", SpinnerService);
         }
     }

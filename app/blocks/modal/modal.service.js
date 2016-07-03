@@ -18,15 +18,12 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            ModalService = (function () {
-                function ModalService() {
-                }
-                ModalService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
-                ], ModalService);
-                return ModalService;
-            }());
+            let ModalService = class ModalService {
+            };
+            ModalService = __decorate([
+                core_1.Injectable(), 
+                __metadata('design:paramtypes', [])
+            ], ModalService);
             exports_1("ModalService", ModalService);
         }
     }

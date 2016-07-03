@@ -18,22 +18,19 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            InitCapsPipe = (function () {
-                function InitCapsPipe() {
-                }
-                InitCapsPipe.prototype.transform = function (value, args) {
+            let InitCapsPipe = class InitCapsPipe {
+                transform(value, args) {
                     return value
                         .toLowerCase()
                         .replace(/(?:^|\s)[a-z]/g, function (m) {
                         return m.toUpperCase();
                     });
-                };
-                InitCapsPipe = __decorate([
-                    core_1.Pipe({ name: 'initCaps' }), 
-                    __metadata('design:paramtypes', [])
-                ], InitCapsPipe);
-                return InitCapsPipe;
-            }());
+                }
+            };
+            InitCapsPipe = __decorate([
+                core_1.Pipe({ name: 'initCaps' }), 
+                __metadata('design:paramtypes', [])
+            ], InitCapsPipe);
             exports_1("InitCapsPipe", InitCapsPipe);
         }
     }

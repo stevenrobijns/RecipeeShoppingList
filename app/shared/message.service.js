@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/Rx', './toast/toast.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', './config', '../blocks/toast/toast.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,41 +10,48 @@ System.register(['angular2/core', 'rxjs/Rx', './toast/toast.service'], function(
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Rx_1, toast_service_1;
-    var ExceptionService;
+    var core_1, http_1, Rx_1, config_1, toast_service_1;
+    var MessageService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
             function (Rx_1_1) {
                 Rx_1 = Rx_1_1;
+            },
+            function (config_1_1) {
+                config_1 = config_1_1;
             },
             function (toast_service_1_1) {
                 toast_service_1 = toast_service_1_1;
             }],
         execute: function() {
-            let ExceptionService = class ExceptionService {
-                constructor(_toastService) {
+            let MessageService = class MessageService {
+                constructor(_http, _toastService) {
+                    this._http = _http;
                     this._toastService = _toastService;
-                    this.catchBadResponse = (errorResponse) => {
-                        let res = errorResponse;
-                        let err = res.json();
-                        let emsg = err ?
-                            (err.error ? err.error : JSON.stringify(err)) :
-                            (res.statusText || 'unknown error');
-                        this._toastService.activate(`Error - Bad Response - ${emsg}`);
-                        //return Observable.throw(emsg); // TODO: We should NOT swallow error here.
-                        return Rx_1.Observable.of();
-                    };
+                    this._subject = new Rx_1.Subject;
+                    this.state = this._subject;
+                }
+                resetDb() {
+                    let msg = 'Reset the Data Successfully';
+                    this._http.post(config_1.CONFIG.baseUrls.resetDb, null)
+                        .subscribe(() => {
+                        this._subject.next({ message: msg });
+                        this._toastService.activate(msg);
+                    });
                 }
             };
-            ExceptionService = __decorate([
+            MessageService = __decorate([
                 core_1.Injectable(), 
-                __metadata('design:paramtypes', [toast_service_1.ToastService])
-            ], ExceptionService);
-            exports_1("ExceptionService", ExceptionService);
+                __metadata('design:paramtypes', [http_1.Http, toast_service_1.ToastService])
+            ], MessageService);
+            exports_1("MessageService", MessageService);
         }
     }
 });
-//# sourceMappingURL=exception.service.js.map
+//# sourceMappingURL=message.service.js.map

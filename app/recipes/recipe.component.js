@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,41 +10,37 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var FilterTextComponent;
+    var core_1, router_1;
+    var RecipeComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
-            let FilterTextComponent = class FilterTextComponent {
+            let RecipeComponent = class RecipeComponent {
                 constructor() {
-                    this.changed = new core_1.EventEmitter();
-                    componentHandler.upgradeDom();
-                }
-                clear() {
-                    this.filter = '';
-                }
-                filterChanged(event) {
-                    event.preventDefault();
-                    console.log(`Filter Changed: ${this.filter}`);
-                    this.changed.emit(this.filter);
+                    this.editRecipe = {};
                 }
             };
             __decorate([
-                core_1.Output(), 
-                __metadata('design:type', core_1.EventEmitter)
-            ], FilterTextComponent.prototype, "changed", void 0);
-            FilterTextComponent = __decorate([
+                core_1.Input(), 
+                __metadata('design:type', Object)
+            ], RecipeComponent.prototype, "Recipe", void 0);
+            RecipeComponent = __decorate([
                 core_1.Component({
-                    selector: 'filter-text',
-                    templateUrl: 'app/blocks/filter-text/filter-text.component.html'
+                    selector: 'recipe',
+                    templateUrl: 'app/recipes/recipe.component.html',
+                    styles: ['.mdl-textfield__label {top: 0,}'],
+                    directives: [router_1.ROUTER_DIRECTIVES]
                 }), 
                 __metadata('design:paramtypes', [])
-            ], FilterTextComponent);
-            exports_1("FilterTextComponent", FilterTextComponent);
+            ], RecipeComponent);
+            exports_1("RecipeComponent", RecipeComponent);
         }
     }
 });
-//# sourceMappingURL=filter-text.component.js.map
+//# sourceMappingURL=recipe.component.js.map

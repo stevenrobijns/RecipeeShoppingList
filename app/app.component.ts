@@ -5,14 +5,14 @@ import 'rxjs/Rx'; // load the full rxjs
 
 // import { InMemoryBackendConfig, InMemoryBackendService, SEED_DATA } from 'a2-in-memory-web-api/core';
 // import { InMemoryStoryService } from '../api/in-memory-story.service';
- import { RecipeesComponent, RecipeeService } from './recipees/recipees';
+ import { RecipesComponent, RecipeService } from './recipes/recipes';
 // import { DashboardComponent } from './dashboard/dashboard';
 // import { VehiclesComponent } from './vehicles/vehicles';
 // import { CONFIG, MessageService } from './shared/shared';
 // import { EntityService, ExceptionService, ModalComponent, ModalService, SpinnerComponent, SpinnerService, ToastComponent, ToastService } from './blocks/blocks';
 
 @Component({
-  selector: 'recipee-shopping-app',
+  selector: 'recipe-shopping-app',
   templateUrl: 'app/app.component.html',
   styleUrls: ['app/app.component.css'],
   directives: [ROUTER_DIRECTIVES, ModalComponent, SpinnerComponent, ToastComponent],

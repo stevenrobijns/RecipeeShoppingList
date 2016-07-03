@@ -22,30 +22,32 @@ System.register(['angular2/core', './spinner.service'], function(exports_1, cont
             }],
         execute: function() {
             ACTIVE_CLASS = 'is-active';
-            SpinnerComponent = (function () {
-                function SpinnerComponent(_spinnerService) {
+            let SpinnerComponent = class SpinnerComponent {
+                constructor(_spinnerService) {
                     this._spinnerService = _spinnerService;
                     this.visible = false;
                 }
-                SpinnerComponent.prototype.ngOnInit = function () {
-                    var _this = this;
+                ngOnInit() {
                     componentHandler.upgradeDom();
                     this._spinnerStateChanged = this._spinnerService.spinnerState
-                        .subscribe(function (state) { return _this.visible = state.show; });
-                };
-                SpinnerComponent.prototype.ngOnDestroy = function () {
+                        .subscribe((state) => this.visible = state.show);
+                }
+                ngOnDestroy() {
                     this._spinnerStateChanged.unsubscribe();
-                };
-                SpinnerComponent = __decorate([
-                    core_1.Component({
-                        selector: 'story-spinner',
-                        template: "\n    <div\n      class=\"spinner mdl-spinner mdl-js-spinner mdl-spinner--single-color\"\n      [class.is-active]=\"visible\"></div>\n  ",
-                        styles: [".spinner {position: absolute;left: 46%;top: 12%"]
-                    }), 
-                    __metadata('design:paramtypes', [spinner_service_1.SpinnerService])
-                ], SpinnerComponent);
-                return SpinnerComponent;
-            }());
+                }
+            };
+            SpinnerComponent = __decorate([
+                core_1.Component({
+                    selector: 'story-spinner',
+                    template: `
+    <div
+      class="spinner mdl-spinner mdl-js-spinner mdl-spinner--single-color"
+      [class.is-active]="visible"></div>
+  `,
+                    styles: [`.spinner {position: absolute;left: 46%;top: 12%`]
+                }), 
+                __metadata('design:paramtypes', [spinner_service_1.SpinnerService])
+            ], SpinnerComponent);
             exports_1("SpinnerComponent", SpinnerComponent);
         }
     }
