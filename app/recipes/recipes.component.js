@@ -12,6 +12,8 @@ var core_1 = require('@angular/core');
 var RecipesComponent = (function () {
     function RecipesComponent() {
     }
+    RecipesComponent.prototype.ngOnInit = function () {
+    };
     RecipesComponent = __decorate([
         core_1.Component({
             selector: 'my-recipes',
